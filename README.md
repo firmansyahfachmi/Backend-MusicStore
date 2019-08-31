@@ -1,4 +1,4 @@
-# RESTful API Rent Book App
+# REST API Backend-MusicStore
 
 
 <p align="center">
@@ -23,8 +23,8 @@
 ## Installation
 ### Clone
 ```
-$ git clone https://github.com/imambaehaqi/JS-BackendRentBookApp.git
-$ cd JS-BackendRentBookApp
+$ git clone https://github.com/
+$ cd Backend-MusicStore
 $ npm install
 ```
 
@@ -42,32 +42,31 @@ DB_USER = "YOUR-DB-USER"
 DB_PASSWORD = "YOUR-DB-PASSWORD"
 DB_NAME = "YOUR-DB-NAME"
 
-JWT_SECRET = "YOUR-SECRET"
 ```
 ### Start Development Server
 ```
 $ npm start
 ```
+or
+```
+$ npm run server
+```
 
 ## Documentation
 
-### Books Routes
+### Routes
 
 #### GET Request
-
- - "/books" => display all books, with default pagination {page:1, limit:10}. Query params:
-    - search -> display all books with title that contains the keyword,
-	- sortby -> its value is name of column you want to sort,
+ - Root endpoint : /anekamusik
+ - "/" => display all category, with default pagination {page:1, limit:10}. Query params:
     - typeby -> its filtering your ascending or descending,
 	- available -> displaying list of available books if it's value set to 1, or unavailable books if set to 0,
 	- page -> page to display (default 1),
 	- limit -> number of books displayed in a page (default 10).
 
- - "/books/{bookid}" => display one book with the id specified by id parameter.
-
 #### POST Request
 
- - "/books" => Inserting a book to database. data required = genreid, title, description, image, released.
+ - "/" => Inserting a category to database. data required = genreid, title, description, image, released.
     - before entering book data, it's insert data genres,
 	- note = image is the url to the image, not the actual image.
 
@@ -80,12 +79,7 @@ $ npm start
  - "/books/{bookid}" => Deleting a book in database. data required = bookid.
 
 
-## Optional
-
- - Active app, you most first Register/Login with JWT.
- - Two level users, regular and admin -> your changed regular to admin at mysql.
-
 
 ### License
 ----
-[ISC](https://en.wikipedia.org/wiki/ISC_license "ISC")
+
