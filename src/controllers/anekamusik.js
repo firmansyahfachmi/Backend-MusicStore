@@ -3,12 +3,8 @@ const helper = require('../helpers/formResponse')
 
 module.exports = {
     getHome: (req, res) => {
-        const data = {
-            list: req.params.list || 'all',
-        }
 
-
-        Model.getHome(data)
+        Model.getHome()
             .then(response => {
                 helper.result(res, 200, response);
             })
@@ -20,9 +16,8 @@ module.exports = {
 
     getProducts: (req, res) => {
         const data = {
-            category: req.params.category || 'all',
             page: req.query.page || 1,
-            limit: req.query.limit || 10
+            limit: req.query.limit || 8
         }
 
         Model.getProducts(data)
@@ -37,7 +32,7 @@ module.exports = {
 
     addCategory: (req, res) => {
         data = {
-            category: req.body.category,
+            category_name: req.body.category,
             url: req.body.url
         }
 

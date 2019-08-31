@@ -4,8 +4,8 @@ const Route = express.Router();
 const Controller = require('../controllers/anekamusik')
 
 Route
-    .get('/:list', Controller.getHome)
-    .get('/products/:category', Controller.getProducts)
+    .get('/', Controller.getHome)
+    .get('/products', Controller.getProducts)
     .post('/', Controller.addCategory)
     .post('/products', Controller.addProducts)
     .patch('/products/:id', Controller.updateProducts)
