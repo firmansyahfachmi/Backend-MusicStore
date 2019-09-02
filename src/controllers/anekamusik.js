@@ -14,8 +14,21 @@ module.exports = {
             });
     },
 
+    getBranch: (req, res) => {
+
+        Model.getBranch()
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
     getProducts: (req, res) => {
         const data = {
+            category: req.params.category,
             page: req.query.page || 1,
             limit: req.query.limit || 8
         }
@@ -29,6 +42,42 @@ module.exports = {
                 helper.result(res, 404, err);
             });
     },
+
+    getProductsDetail: (req, res) => {
+        const data = {
+            name: req.params.name,
+            page: req.query.page || 1,
+            limit: req.query.limit || 8
+        }
+
+        Model.getProductsDetail(data)
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    getProductsBy: (req, res) => {
+        const data = {
+            name: req.params.name,
+            page: req.query.page || 1,
+            limit: req.query.limit || 8
+        }
+
+        Model.getProductsBy(data)
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    
 
     addCategory: (req, res) => {
         data = {
@@ -48,8 +97,8 @@ module.exports = {
 
     addProducts: (req, res) => {
         data = {
-            id_category: req.body.id_category,
-            id_branch: req.body.id_branch,
+            id_category: req.body.category,
+            id_branch: req.body.branch,
             name: req.body.name,
             quantity: req.body.quantity,
             description: req.body.description,

@@ -5,7 +5,10 @@ const Controller = require('../controllers/anekamusik')
 
 Route
     .get('/', Controller.getHome)
-    .get('/products', Controller.getProducts)
+    .get('/branch', Controller.getBranch)
+    .get('/products/:category', Controller.getProducts)
+    .get('/products/detail/:name', Controller.getProductsDetail)
+    .get('/products/search/:name', Controller.getProductsBy)
     .post('/', Controller.addCategory)
     .post('/products', Controller.addProducts)
     .patch('/products/:id', Controller.updateProducts)
