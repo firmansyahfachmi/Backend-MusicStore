@@ -60,11 +60,21 @@ module.exports = {
             });
     },
 
+    getProductsTable: (req, res) => {
+
+        Model.getProductsTable()
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
     getProductsBy: (req, res) => {
         const data = {
             name: req.params.name,
-            page: req.query.page || 1,
-            limit: req.query.limit || 8
         }
 
         Model.getProductsBy(data)
@@ -120,8 +130,8 @@ module.exports = {
         id = req.params.id
         data = {
 
-            id_category: req.body.id_category,
-            id_branch: req.body.id_branch,
+            id_category: req.body.category,
+            id_branch: req.body.branch,
             name: req.body.name,
             quantity: req.body.quantity,
             description: req.body.description,
