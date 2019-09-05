@@ -46,8 +46,6 @@ module.exports = {
     getProductsDetail: (req, res) => {
         const data = {
             name: req.params.name,
-            page: req.query.page || 1,
-            limit: req.query.limit || 8
         }
 
         Model.getProductsDetail(data)
