@@ -85,7 +85,7 @@ module.exports = {
             });
     },
 
-    
+
 
     addCategory: (req, res) => {
         data = {
@@ -95,7 +95,7 @@ module.exports = {
 
         Model.addCategory(data)
             .then(response => {
-                helper.result(res, 200, response);
+                helper.result(res, 200, data);
             })
 
             .catch(err => {
