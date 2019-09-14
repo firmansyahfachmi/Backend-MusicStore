@@ -1,6 +1,6 @@
 <h1 align="center">REST API Backend-MusicStore</h1>
 <div align="center">
-    <a href="#">
+   <a href="#">
     <img src="https://img.shields.io/badge/npm-6.9.0-brightgreen.svg?style=flat-square" alt="npm version">
   </a>
   <a href="#">
@@ -10,8 +10,7 @@
     <img src="https://img.shields.io/badge/ExpressJS-4.x-orange.svg?style=flat-square" alt="npm version">
   </a>
 </div>
-
-  <br><br>
+ <br><br><br>
 
 
 <p align="center">
