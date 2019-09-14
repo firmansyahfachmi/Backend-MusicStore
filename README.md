@@ -23,7 +23,7 @@
 
 ## Introduction 
   
-   Note App is a simple note application specially for backend only. Built with NodeJs using the ExpressJs Framework. Express.js is a web application framework for Node.js. More about Express
+   This is backend only for RSET-API of Music Store. Built with NodeJs using the ExpressJs Framework. Express.js is a web application framework for Node.js. More about Express
 
 ## Requirements
 - Node.js - Download and Install [Node.js](https://nodejs.org/en/) with [NVM](https://github.com/creationix/nvm) (Node Version Manager) - Simple bash script to manage multiple active node.js versions.
