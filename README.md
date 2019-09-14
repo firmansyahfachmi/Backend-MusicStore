@@ -1,4 +1,13 @@
-# REST API Backend-MusicStore
+<h1 align="center">REST API Backend-MusicStore</h1><br><br>
+<a href="#">
+    <img src="https://img.shields.io/badge/npm-6.9.0-brightgreen.svg?style=flat-square" alt="npm version">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/NodeJS-12.4.0-blue.svg?style=flat-square" alt="npm version">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/ExpressJS-4.x-orange.svg?style=flat-square" alt="npm version">
+  </a>
 
 
 <p align="center">
@@ -8,14 +17,8 @@
 </p>
 
 ----
-## Table of contents
-* [Prerequiste](#prerequiste)
-* [Installation](#installation)
-* [Documentation](#documentation)
-* [Optional](#optional)
-* [License](#license)
 
-## Prerequiste
+## Requirements
 - Node.js - Download and Install [Node.js](https://nodejs.org/en/) with [NVM](https://github.com/creationix/nvm) (Node Version Manager) - Simple bash script to manage multiple active node.js versions.
 - MySQL - Download and Install [MySQL](https://www.mysql.com/downloads/) - Make sure it's running on the default port.
 - Postman - Download and Install [Postman](https://www.getpostman.com/downloads) - Implementation with postman latest version.
@@ -54,29 +57,48 @@ $ npm run server
 
 ## Documentation
 
-### Routes
+- Root endpoint : /anekamusik
+
+### Category Routes
 
 #### GET Request
- - Root endpoint : /anekamusik
- - "/" => display all category, with default pagination {page:1, limit:10}. Query params:
-    - typeby -> its filtering your ascending or descending,
-	- available -> displaying list of available books if it's value set to 1, or unavailable books if set to 0,
-	- page -> page to display (default 1),
-	- limit -> number of books displayed in a page (default 10).
+ 
+ - "/" => Get category data from database
 
 #### POST Request
 
- - "/" => Inserting a category to database. data required = genreid, title, description, image, released.
-    - before entering book data, it's insert data genres,
-	- note = image is the url to the image, not the actual image.
+ - "/" => Inserti new category to database
+ 
+------
+
+ ### Branch Routes
+
+#### GET Request
+ 
+ - "/branch" => Get branch data from database
+
+-------
+ 
+ ### Products Routes
+
+#### GET Request
+ 
+ - "/products/{:category}" => Get products data from database by category
+ - "/products/detail/{:name}" => Get detail of products from database by name of products
+ - "/productsTable" => Get data products table from database
+ - "/products/search/{:name}" => Get products data by search
+
+#### POST Request
+
+ - "/products" => Insert new product to database
 
 #### PATCH Request
 
- - "/books/{bookid}" => Updating a book in database. data required = bookid, genreid, title, description, image, released.
+ - "/products/{:id}" => Updating a product in database
 
 #### DELETE Request
 
- - "/books/{bookid}" => Deleting a book in database. data required = bookid.
+ - "/products/{:id}" => Deleting a product in database
 
 
 
