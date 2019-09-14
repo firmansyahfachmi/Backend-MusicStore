@@ -60,48 +60,46 @@ $ npm run server
 
 ## Documentation
 
-- Root endpoint : /anekamusik
+- Root endpoint : `"/anekamusik"`
 
-### Category Routes
+### 1. Category Routes
 
 #### GET Request
  
- - "/" => Get category data from database
+ - `"/"` => Get category data from database
 
 #### POST Request
 
- - "/" => Inserti new category to database
+ - `"/"` => Inserti new category to database
  
-------
 
- ### Branch Routes
-
-#### GET Request
- 
- - "/branch" => Get branch data from database
-
--------
- 
- ### Products Routes
+ ### 2. Branch Routes
 
 #### GET Request
  
- - "/products/{:category}" => Get products data from database by category
- - "/products/detail/{:name}" => Get detail of products from database by name of products
- - "/productsTable" => Get data products table from database
- - "/products/search/{:name}" => Get products data by search
+ - `"/branch"` => Get branch data from database
+
+ 
+ ### 3. Products Routes
+
+#### GET Request
+ 
+ - `"/products/{:category}"` => Get products data from database by category
+ - `"/products/detail/{:name}"` => Get detail of products from database by name of products
+ - `"/productsTable"` => Get data products table from database
+ - `"/products/search/{:name}"` => Get products data by search
 
 #### POST Request
 
- - "/products" => Insert new product to database
+ - `"/products"` => Insert new product to database
 
 #### PATCH Request
 
- - "/products/{:id}" => Updating a product in database
+ - `"/products/{:id}"` => Updating a product in database
 
 #### DELETE Request
 
- - "/products/{:id}" => Deleting a product in database
+ - `"/products/{:id}"` => Deleting a product in database
 
 
 
