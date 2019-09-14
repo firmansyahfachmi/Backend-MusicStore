@@ -29,7 +29,7 @@
 ## Installation
 ### Clone
 ```
-$ git clone https://github.com/
+$ git clone https://github.com/firmansyahfachmi/Backend-MusicStore.git
 $ cd Backend-MusicStore
 $ npm install
 ```
