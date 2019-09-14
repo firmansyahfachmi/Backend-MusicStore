@@ -21,6 +21,10 @@
 
 ----
 
+## Introduction 
+  
+   Note App is a simple note application specially for backend only. Built with NodeJs using the ExpressJs Framework. Express.js is a web application framework for Node.js. More about Express
+
 ## Requirements
 - Node.js - Download and Install [Node.js](https://nodejs.org/en/) with [NVM](https://github.com/creationix/nvm) (Node Version Manager) - Simple bash script to manage multiple active node.js versions.
 - MySQL - Download and Install [MySQL](https://www.mysql.com/downloads/) - Make sure it's running on the default port.
@@ -64,40 +68,40 @@ $ npm run server
 
 ### 1. Category Routes
 
-#### GET Request
+#### - GET Request
  
- - `"/"` => Get category data from database
+- `"/"` => Get category data from database
 
-#### POST Request
+#### - POST Request
 
  - `"/"` => Inserti new category to database
  
 
  ### 2. Branch Routes
 
-#### GET Request
+#### - GET Request
  
  - `"/branch"` => Get branch data from database
 
  
  ### 3. Products Routes
 
-#### GET Request
+#### - GET Request
  
  - `"/products/{:category}"` => Get products data from database by category
  - `"/products/detail/{:name}"` => Get detail of products from database by name of products
  - `"/productsTable"` => Get data products table from database
  - `"/products/search/{:name}"` => Get products data by search
 
-#### POST Request
+#### - POST Request
 
  - `"/products"` => Insert new product to database
 
-#### PATCH Request
+#### - PATCH Request
 
  - `"/products/{:id}"` => Updating a product in database
 
-#### DELETE Request
+#### - DELETE Request
 
  - `"/products/{:id}"` => Deleting a product in database
 
