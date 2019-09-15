@@ -26,9 +26,9 @@ module.exports = {
             });
     },
 
-    getCart: (req, res) => {
-
-        Model.getCart()
+    getUser: (req, res) => {
+        id = req.params.id
+        Model.getUser(id)
             .then(response => {
                 helper.result(res, 200, response);
             })
@@ -38,9 +38,22 @@ module.exports = {
             });
     },
 
-    getWishlist: (req, res) => {
+    getCart: (req, res) => {
+        id = req.params.id
+        Model.getCart(id)
+            .then(response => {
+                helper.result(res, 200, response);
+            })
 
-        Model.getWishlist()
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+
+    getWishlist: (req, res) => {
+        id = req.params.id
+        Model.getWishlist(id)
             .then(response => {
                 helper.result(res, 200, response);
             })
@@ -129,12 +142,13 @@ module.exports = {
 
     addCart: (req, res) => {
         data = {
+            id_user: req.params.id,
             category: req.body.category,
             branch: req.body.branch,
             name: req.body.name,
             price: req.body.price,
             url: req.body.url,
-            product_id: req.body.product_id
+            product_id: req.body.id
         }
 
         Model.addCart(data)
@@ -149,13 +163,14 @@ module.exports = {
 
     addWishlist: (req, res) => {
         data = {
+            id_user: req.params.id,
             category: req.body.category,
             branch: req.body.branch,
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
             url: req.body.url,
-            product_id: req.body.product_id
+            product_id: req.body.id
         }
 
         Model.addWishlist(data)
@@ -227,8 +242,9 @@ module.exports = {
 
     deleteCart: (req, res) => {
         id = req.params.id;
+        uid = req.params.uid;
 
-        Model.deleteCart(id)
+        Model.deleteCart(uid, id)
             .then(response => {
                 helper.result(res, 200, response);
             })
@@ -240,8 +256,9 @@ module.exports = {
 
     deleteWishlist: (req, res) => {
         id = req.params.id;
+        uid = req.params.uid;
 
-        Model.deleteWishlist(id)
+        Model.deleteWishlist(uid, id)
             .then(response => {
                 helper.result(res, 200, response);
             })

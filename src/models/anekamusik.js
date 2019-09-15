@@ -25,9 +25,9 @@ module.exports = {
         })
     },
 
-    getCart: () => {
+    getCart: (id) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM cart', (err, response) => {
+            db.query(`SELECT * FROM cart WHERE id_user = '${id}'`, (err, response) => {
                 if (!err) {
                     resolve(response)
                 } else {
@@ -37,9 +37,21 @@ module.exports = {
         })
     },
 
-    getWishlist: () => {
+    getWishlist: (id) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM wishlist', (err, response) => {
+            db.query(`SELECT * FROM wishlist WHERE id_user = '${id}'`, (err, response) => {
+                if (!err) {
+                    resolve(response)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    getUser: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query(`SELECT * FROM user WHERE id = '${id}'`, (err, response) => {
                 if (!err) {
                     resolve(response)
                 } else {
@@ -178,9 +190,9 @@ module.exports = {
         })
     },
 
-    deleteCart: (id) => {
+    deleteCart: (uid, id) => {
         return new Promise((resolve, reject) => {
-            db.query(`DELETE FROM cart WHERE id='${id}'`, (err, response) => {
+            db.query(`DELETE FROM cart WHERE id='${id}' AND id_user = '${uid}'`, (err, response) => {
 
                 if (!err) {
                     resolve(response);
@@ -192,9 +204,9 @@ module.exports = {
         })
     },
 
-    deleteWishlist: (id) => {
+    deleteWishlist: (uid, id) => {
         return new Promise((resolve, reject) => {
-            db.query(`DELETE FROM wishlist WHERE id='${id}'`, (err, response) => {
+            db.query(`DELETE FROM wishlist WHERE id='${id}' AND id_user='${uid}'`, (err, response) => {
 
                 if (!err) {
                     resolve(response);
