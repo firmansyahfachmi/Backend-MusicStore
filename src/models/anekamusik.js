@@ -25,13 +25,36 @@ module.exports = {
         })
     },
 
+    getCart: () => {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM cart', (err, response) => {
+                if (!err) {
+                    resolve(response)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    getWishlist: () => {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM wishlist', (err, response) => {
+                if (!err) {
+                    resolve(response)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
     getProducts: (data) => {
         const page = (data.page * data.limit) - data.limit;
         return new Promise((resolve, reject) => {
             let query = '';
-            (data.category === 'all') ? query = `SELECT p.id, c.category_name, b.branch_name, p.name, p.quantity, p.description, p.price,p.url FROM products AS p INNER JOIN category AS c ON (p.id_category = c.id)INNER JOIN branch AS b ON (p.id_branch = b.id) ORDER BY id ASC LIMIT ${page},${data.limit}`
-            :
-            query = `SELECT p.id, c.category_name, b.branch_name, p.name, p.quantity, p.description, p.price,p.url FROM products AS p INNER JOIN category AS c ON (p.id_category = c.id) INNER JOIN branch AS b ON (p.id_branch = b.id)  WHERE category_name LIKE '%${data.category}%' ORDER BY id ASC LIMIT ${page},${data.limit}`
+            (data.category === 'all') ? query = `SELECT p.id, c.category_name, b.branch_name, p.name, p.quantity, p.description, p.price,p.url FROM products AS p INNER JOIN category AS c ON (p.id_category = c.id)INNER JOIN branch AS b ON (p.id_branch = b.id) ORDER BY id ASC LIMIT ${page},${data.limit}`:
+                query = `SELECT p.id, c.category_name, b.branch_name, p.name, p.quantity, p.description, p.price,p.url FROM products AS p INNER JOIN category AS c ON (p.id_category = c.id) INNER JOIN branch AS b ON (p.id_branch = b.id)  WHERE category_name LIKE '%${data.category}%' ORDER BY id ASC LIMIT ${page},${data.limit}`
             db.query(query, (err, response) => {
                 if (!err) {
                     resolve(response)
@@ -79,11 +102,35 @@ module.exports = {
     },
 
 
-    
+
 
     addCategory: (data) => {
         return new Promise((resolve, reject) => {
             db.query(`INSERT INTO category SET ?`, data, (err, response) => {
+                if (!err) {
+                    resolve(response)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    addCart: (data) => {
+        return new Promise((resolve, reject) => {
+            db.query(`INSERT INTO cart SET ?`, data, (err, response) => {
+                if (!err) {
+                    resolve(response)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    addWishlist: (data) => {
+        return new Promise((resolve, reject) => {
+            db.query(`INSERT INTO wishlist SET ?`, data, (err, response) => {
                 if (!err) {
                     resolve(response)
                 } else {
@@ -120,6 +167,34 @@ module.exports = {
     deleteProducts: (id) => {
         return new Promise((resolve, reject) => {
             db.query(`DELETE FROM products WHERE id='${id}'`, (err, response) => {
+
+                if (!err) {
+                    resolve(response);
+                } else {
+                    reject(err);
+                }
+
+            })
+        })
+    },
+
+    deleteCart: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query(`DELETE FROM cart WHERE id='${id}'`, (err, response) => {
+
+                if (!err) {
+                    resolve(response);
+                } else {
+                    reject(err);
+                }
+
+            })
+        })
+    },
+
+    deleteWishlist: (id) => {
+        return new Promise((resolve, reject) => {
+            db.query(`DELETE FROM wishlist WHERE id='${id}'`, (err, response) => {
 
                 if (!err) {
                     resolve(response);

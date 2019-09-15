@@ -26,6 +26,30 @@ module.exports = {
             });
     },
 
+    getCart: (req, res) => {
+
+        Model.getCart()
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    getWishlist: (req, res) => {
+
+        Model.getWishlist()
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
     getProducts: (req, res) => {
         const data = {
             category: req.params.category,
@@ -103,6 +127,47 @@ module.exports = {
             });
     },
 
+    addCart: (req, res) => {
+        data = {
+            category: req.body.category,
+            branch: req.body.branch,
+            name: req.body.name,
+            price: req.body.price,
+            url: req.body.url,
+            product_id: req.body.product_id
+        }
+
+        Model.addCart(data)
+            .then(response => {
+                helper.result(res, 200, data);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    addWishlist: (req, res) => {
+        data = {
+            category: req.body.category,
+            branch: req.body.branch,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            url: req.body.url,
+            product_id: req.body.product_id
+        }
+
+        Model.addWishlist(data)
+            .then(response => {
+                helper.result(res, 200, data);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
     addProducts: (req, res) => {
         data = {
             id_category: req.body.category,
@@ -151,6 +216,32 @@ module.exports = {
         id = req.params.id;
 
         Model.deleteProducts(id)
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    deleteCart: (req, res) => {
+        id = req.params.id;
+
+        Model.deleteCart(id)
+            .then(response => {
+                helper.result(res, 200, response);
+            })
+
+            .catch(err => {
+                helper.result(res, 404, err);
+            });
+    },
+
+    deleteWishlist: (req, res) => {
+        id = req.params.id;
+
+        Model.deleteWishlist(id)
             .then(response => {
                 helper.result(res, 200, response);
             })
