@@ -5,7 +5,7 @@ require("dotenv/config");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const router = require("./src/routes/anekamusik");
+const router = require("./src/routes/root");
 
 const app = express();
 const port = process.env.PORT || 4000;
