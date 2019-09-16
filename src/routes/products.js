@@ -7,7 +7,7 @@ Route
 
     .get('/:category', Controller.getProducts)
     .get('/detail/:name', Controller.getProductsDetail)
-    .get('/table', Controller.getProductsTable)
+    .get('/', Controller.getProductsTable)
     .get('/search/:name', Controller.getProductsBy)
 
     .post('/', Controller.addProducts)

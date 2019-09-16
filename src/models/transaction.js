@@ -1,9 +1,9 @@
 const db = require("../configs/connect");
 
 module.exports = {
-    getCategory: () => {
+    getTransaction: (uid) => {
         return new Promise((resolve, reject) => {
-            db.query("SELECT * FROM category", (err, response) => {
+            db.query(`SELECT * FROM transaction WHERE id_user = '${uid}'`, (err, response) => {
                 if (!err) {
                     resolve(response);
                 } else {
@@ -13,9 +13,9 @@ module.exports = {
         });
     },
 
-    addCategory: data => {
+    addTransaction: (data) => {
         return new Promise((resolve, reject) => {
-            db.query(`INSERT INTO category SET ?`, data, (err, response) => {
+            db.query(`INSERT INTO transaction SET ?`, data, (err, response) => {
                 if (!err) {
                     resolve(response);
                 } else {

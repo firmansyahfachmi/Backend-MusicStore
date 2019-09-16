@@ -11,8 +11,10 @@ const app = express();
 const port = process.env.PORT || 4000;
 const nodeEnv = process.env.NODE_ENV || "Development";
 
-// app.use(helmet());
-app.use(cors("*"));
+app.use(helmet({
+  xssFilter: true
+}));
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Server is listening in ${nodeEnv} mode on port ${port} `);

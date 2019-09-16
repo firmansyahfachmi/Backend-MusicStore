@@ -1,3 +1,5 @@
+const crypto = require('crypto')
+
 module.exports = {
     result: (res, status, response) => {
         if (response < 1) {
@@ -11,5 +13,14 @@ module.exports = {
         };
         res.status(status);
         res.json(formResponse);
+    },
+
+    setPassword: (password, secretkey) => {
+        let hash = crypto.createHmac('sha512', secretkey)
+        hash.update(password)
+        let value = hash.digest('hex')
+        return {
+            passwordHash: value
+        }
     }
 };

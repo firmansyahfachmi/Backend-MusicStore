@@ -2,10 +2,11 @@ const express = require('express');
 const Route = express.Router();
 
 const Controller = require('../controllers/category')
+const Auth = require('../helpers/auth')
 
 Route
 
-    .get('/', Controller.getCategory)
+    .get('/', Auth.authInfo, Auth.accesstoken, Controller.getCategory)
 
     .post('/', Controller.addCategory)
 
