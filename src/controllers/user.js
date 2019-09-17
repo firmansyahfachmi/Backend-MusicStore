@@ -47,7 +47,7 @@ module.exports = {
                     dataUser.token = jwt.sign({
                         userid: dataUser.id
                     }, process.env.SECRET_KEY, {
-                        expiresIn: '30s'
+                        expiresIn: '1h'
                     })
 
                     delete dataUser.password

@@ -27,11 +27,11 @@ module.exports = {
 
     getByEmail: (email) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT id, name, email, password FROM user WHERE email = ?', email, (err, result) => {
+            db.query('SELECT id, name, email, level, password FROM user WHERE email = ?', email, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
-                    reject(new Error(err))
+                    reject(err)
                 }
             })
         })
