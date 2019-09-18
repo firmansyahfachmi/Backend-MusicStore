@@ -15,18 +15,20 @@ module.exports = {
     },
 
     addCart: (req, res) => {
+        id = req.params.id
         data = {
-            id_user: req.params.id,
-            category: req.body.category,
-            branch: req.body.branch,
+            id_user: Number(id),
+            id_product: req.body.id,
+            category: req.body.category_name,
+            branch: req.body.branch_name,
             name: req.body.name,
             price: req.body.price,
-            url: req.body.url,
-            product_id: req.body.id
+            url: req.body.url
         }
 
         Model.addCart(data)
             .then(response => {
+                data.id = response.insertId
                 helper.result(res, 200, data);
             })
 
@@ -38,10 +40,9 @@ module.exports = {
     deleteCart: (req, res) => {
         id = req.params.id;
         uid = req.params.uid;
-
         Model.deleteCart(uid, id)
             .then(response => {
-                helper.result(res, 200, response);
+                helper.result(res, 200, id);
             })
 
             .catch(err => {

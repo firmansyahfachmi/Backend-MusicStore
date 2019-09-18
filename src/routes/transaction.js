@@ -2,12 +2,13 @@ const express = require('express');
 const Route = express.Router();
 
 const Controller = require('../controllers/transaction')
+const Auth = require('../helpers/auth')
 
 Route
 
-    .get('/:uid', Controller.getTransaction)
+    .get('/:uid', Auth.authInfo, Auth.accesstoken, Controller.getTransaction)
 
-    .post('/:uid', Controller.addTransaction)
+    .post('/:uid', Auth.authInfo, Auth.accesstoken, Controller.addTransaction)
 
 
 module.exports = Route;

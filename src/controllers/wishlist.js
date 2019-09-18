@@ -17,11 +17,10 @@ module.exports = {
     addWishlist: (req, res) => {
         data = {
             id_user: req.params.id,
-            category: req.body.category,
-            branch: req.body.branch,
+            category: req.body.category_name,
+            branch: req.body.branch_name,
             name: req.body.name,
             price: req.body.price,
-            description: req.body.description,
             url: req.body.url,
             product_id: req.body.id
         }
@@ -42,7 +41,7 @@ module.exports = {
 
         Model.deleteWishlist(uid, id)
             .then(response => {
-                helper.result(res, 200, response);
+                helper.result(res, 200, id);
             })
 
             .catch(err => {
