@@ -11,7 +11,6 @@ Route
 
     .post('/:uid', Auth.authInfo, Auth.accesstoken, Controller.addTransaction)
 
-    .patch('/:uid/:id')
 
 
 module.exports = Route;

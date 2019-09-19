@@ -27,7 +27,7 @@ module.exports = {
 
     addTransaction: (req, res) => {
         data = {
-            id_user: req.param.uid,
+            id_user: req.params.uid,
             id_product: req.body.id_product,
             quantity: req.body.quantity
         }

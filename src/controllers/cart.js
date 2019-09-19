@@ -51,7 +51,6 @@ module.exports = {
             price: req.body.price,
             url: req.body.url
         }
-        console.log('h', data)
         Model.editCart(data, uid, id)
             .then(response => {
                 data.id = response.insertId
