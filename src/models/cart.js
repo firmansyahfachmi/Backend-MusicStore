@@ -28,6 +28,22 @@ module.exports = {
         });
     },
 
+    editCart: (data, uid, id) => {
+        return new Promise((resolve, reject) => {
+            db.query(
+                `UPDATE cart SET ? WHERE id_product='${id}' AND id_user='${uid}'`,
+                data,
+                (err, response) => {
+                    if (!err) {
+                        resolve(response);
+                    } else {
+                        reject(err);
+                    }
+                }
+            );
+        });
+    },
+
     deleteCart: (uid, id) => {
         return new Promise((resolve, reject) => {
             db.query(

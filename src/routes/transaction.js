@@ -5,10 +5,13 @@ const Controller = require('../controllers/transaction')
 const Auth = require('../helpers/auth')
 
 Route
+    .get('/', Auth.authInfo, Auth.accesstoken, Controller.getTransactionAdmin)
 
     .get('/:uid', Auth.authInfo, Auth.accesstoken, Controller.getTransaction)
 
     .post('/:uid', Auth.authInfo, Auth.accesstoken, Controller.addTransaction)
+
+    .patch('/:uid/:id')
 
 
 module.exports = Route;

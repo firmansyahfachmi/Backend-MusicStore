@@ -23,7 +23,7 @@ module.exports = {
             email: req.body.email,
             name: req.body.name,
             password: passwordHash.passwordHash,
-            level: 0
+            level: 2
         }
 
         Model.register(data)
@@ -47,7 +47,7 @@ module.exports = {
                     dataUser.token = jwt.sign({
                         userid: dataUser.id
                     }, process.env.SECRET_KEY, {
-                        expiresIn: '1h'
+                        expiresIn: '24h'
                     })
 
                     delete dataUser.password

@@ -10,6 +10,8 @@ Route
 
     .post('/:id', Auth.authInfo, Auth.accesstoken, Controller.addCart)
 
+    .patch('/:uid/:id', Auth.authInfo, Auth.accesstoken, Controller.editCart)
+
     .delete('/:uid/:id', Auth.authInfo, Auth.accesstoken, Controller.deleteCart)
 
 module.exports = Route;
