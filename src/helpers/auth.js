@@ -7,8 +7,8 @@ module.exports = {
     authInfo: (req, res, next) => {
         const headerAuth = req.headers['authorization']
         const headerToken = req.headers['token']
-
         if (headerAuth !== allowedAccess) {
+            
             return helper.result(res, 401, 'Unauthorized, Need Authentication!')
         } else if (typeof headerToken === 'undefined') {
             console.log('Authentication Valid!')
